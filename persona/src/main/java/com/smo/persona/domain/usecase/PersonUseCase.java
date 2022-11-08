@@ -9,8 +9,15 @@ import java.util.ArrayList;
 @RequiredArgsConstructor
 public class PersonUseCase {
 
-    public HttpStatus createPerson(){
-        return HttpStatus.OK;
+    public Person createPerson(){
+        return Person.builder()
+                .clientName("Sebastian")
+                .clientLastName("Medina")
+                .clientYear("21")
+                .clientCity("Cali")
+                .clientTypeDoc("cc")
+                .clientNumDoc("100221")
+                .build();
     }
 
     public Person getPerson(String clientNumDoc){
