@@ -2,7 +2,6 @@ package com.smo.persona.domain.exception;
 
 
 import com.smo.persona.domain.answer.AnswerException;
-import org.springframework.http.HttpStatus;
 
 public class BodyException extends RuntimeException {
     AnswerException answerException;
