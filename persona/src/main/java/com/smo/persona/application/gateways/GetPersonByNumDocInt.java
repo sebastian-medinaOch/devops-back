@@ -5,8 +5,8 @@ import org.springframework.stereotype.Service;
 
 
 @Service
-public interface GetPersonInt {
+public interface GetPersonByNumDocInt {
 
-    Person getPerson(String clientNumDoc);
+    Person getPersonByNumDoc(String clientNumDoc);
 
 }
