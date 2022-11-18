@@ -20,7 +20,7 @@ public class PersonUseCase {
                 .build();
     }
 
-    public Person getPerson(String clientNumDoc){
+    public Person getPersonByNumDoc(String clientNumDoc){
         return Person.builder()
                 .clientName("Sebastian")
                 .clientLastName("Medina")
@@ -54,8 +54,7 @@ public class PersonUseCase {
         return  persons;
     }
 
-    public HttpStatus deletePerson(String clientNumDoc){
-         return  HttpStatus.OK;
+    public void deletePerson(String clientNumDoc){
     }
 
 }
