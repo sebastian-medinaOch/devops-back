@@ -2,11 +2,15 @@ package com.smo.persona.infrastructure.configuration;
 
 import com.smo.persona.application.services.ServiceCreatePerson;
 import com.smo.persona.application.services.ServiceDeletePerson;
-import com.smo.persona.application.services.ServicesGetPerson;
+import com.smo.persona.application.services.ServicesGetPersonByNumDoc;
 import com.smo.persona.application.services.ServicesGetPersons;
 import com.smo.persona.domain.usecase.PersonUseCase;
+import com.smo.persona.domain.util.AnswerUtil;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
+import java.util.logging.Logger;
+
 
 @Configuration
 public class BeanConfiguration {
@@ -17,8 +21,8 @@ public class BeanConfiguration {
     }
 
     @Bean
-    public ServicesGetPerson servicesGetPerson(PersonUseCase personUseCase){
-        return new ServicesGetPerson(personUseCase);
+    public ServicesGetPersonByNumDoc servicesGetPerson(PersonUseCase personUseCase){
+        return new ServicesGetPersonByNumDoc(personUseCase);
     }
 
     @Bean
@@ -34,6 +38,11 @@ public class BeanConfiguration {
     @Bean
     public PersonUseCase personUseCase(){
         return new PersonUseCase();
+    }
+
+    @Bean
+    public AnswerUtil answerUtil(){
+        return new AnswerUtil();
     }
 
 }
