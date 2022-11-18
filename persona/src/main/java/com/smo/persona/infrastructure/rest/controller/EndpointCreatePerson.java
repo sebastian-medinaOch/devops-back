@@ -4,7 +4,7 @@ import com.smo.persona.application.gateways.CreatePersonInt;
 import com.smo.persona.application.request.PersonRequest;
 import com.smo.persona.domain.answer.AnswerData;
 import com.smo.persona.domain.answer.DataResponse;
-import com.smo.persona.domain.model.Person;
+import com.smo.persona.domain.exception.BussinessException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,7 +21,7 @@ public class EndpointCreatePerson {
     private final CreatePersonInt createPersonInt;
 
     @PostMapping(value = "/createPerson")
-    public ResponseEntity<AnswerData> createPerson(@Valid @RequestBody PersonRequest personRequest){
+    public ResponseEntity<AnswerData> createPerson(@Valid @RequestBody PersonRequest personRequest) throws BussinessException {
         createPersonInt.createPerson(personRequest);
         DataResponse dataResponse =
                 DataResponse.builder().message("Sastifactorio").data(Optional.of("Usuario creado sastifactoriamente")).build();
