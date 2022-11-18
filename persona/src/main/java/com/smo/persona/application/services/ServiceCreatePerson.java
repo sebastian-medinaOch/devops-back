@@ -17,7 +17,7 @@ public class ServiceCreatePerson implements CreatePersonInt {
 
     @Override
     public Person createPerson(PersonRequest personRequest) throws BussinessException {
-        validateRequest(personRequest);
+        //validateRequest(personRequest);
         return personUseCase.createPerson();
     }
 
