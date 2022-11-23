@@ -16,14 +16,7 @@ public class PersonUseCase {
     }
 
     public Person getPersonByNumDoc(String clientNumDoc){
-        return Person.builder()
-                .clientName("Sebastian")
-                .clientLastName("Medina")
-                .clientYear("21")
-                .clientCity("Cali")
-                .clientTypeDoc("cc")
-                .clientNumDoc("100221")
-                .build();
+        return personRepositoryInt.findByClientNumDoc(clientNumDoc);
     }
 
     public ArrayList<Person> getPersons(){

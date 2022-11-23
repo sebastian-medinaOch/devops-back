@@ -47,4 +47,17 @@ public class PersonRepository implements PersonRepositoryInt {
         personDaoInt.save(personBuild);
         return person;
     }
+
+    @Override
+    public Person findByClientNumDoc(String clientNumDoc) {
+        PersonEntity personEntity = personDaoInt.findByClientNumDoc(clientNumDoc);
+        return Person.builder().personId(personEntity.getPersonId())
+                .clientName(personEntity.getClientName())
+                .clientLastName(personEntity.getClientLastName())
+                .clientYear(personEntity.getClientYear())
+                .clientCity(personEntity.getClientCity())
+                .clientTypeDoc(personEntity.getClientTypeDoc())
+                .clientNumDoc(personEntity.getClientNumDoc())
+                .build();
+    }
 }

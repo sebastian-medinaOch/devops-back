@@ -8,5 +8,6 @@ import java.util.ArrayList;
 public interface PersonDaoInt extends JpaRepository<PersonEntity, Long> {
 
     ArrayList<PersonEntity> findAll();
+    PersonEntity findByClientNumDoc(String clientNumDoc);
 
 }
