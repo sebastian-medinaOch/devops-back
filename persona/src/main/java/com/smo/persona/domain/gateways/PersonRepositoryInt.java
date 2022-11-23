@@ -7,5 +7,5 @@ import java.util.ArrayList;
 public interface PersonRepositoryInt {
 
     ArrayList<Person> findAll();
-
+    Person savePerson(Person person);
 }

@@ -32,4 +32,19 @@ public class PersonRepository implements PersonRepositoryInt {
         }
         return personArrayList;
     }
+
+    @Override
+    public Person savePerson(Person person) {
+
+        PersonEntity personBuild = new PersonEntity();
+        personBuild.setClientName(person.getClientName());
+        personBuild.setClientLastName(person.getClientLastName());
+        personBuild.setClientYear(person.getClientYear());
+        personBuild.setClientCity(person.getClientCity());
+        personBuild.setClientTypeDoc(person.getClientTypeDoc());
+        personBuild.setClientNumDoc(person.getClientNumDoc());
+
+        personDaoInt.save(personBuild);
+        return person;
+    }
 }

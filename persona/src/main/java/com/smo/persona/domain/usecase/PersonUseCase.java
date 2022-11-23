@@ -11,15 +11,8 @@ public class PersonUseCase {
 
     private final PersonRepositoryInt personRepositoryInt;
 
-    public Person createPerson(){
-        return Person.builder()
-                .clientName("Sebastian")
-                .clientLastName("Medina")
-                .clientYear("21")
-                .clientCity("Cali")
-                .clientTypeDoc("cc")
-                .clientNumDoc("100221")
-                .build();
+    public Person createPerson(Person person){
+        return personRepositoryInt.savePerson(person);
     }
 
     public Person getPersonByNumDoc(String clientNumDoc){

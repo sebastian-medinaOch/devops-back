@@ -3,10 +3,7 @@ package com.smo.persona.infrastructure.persistencia.entity;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Data
 @Entity
@@ -16,6 +13,7 @@ public class PersonEntity {
 
     @Id
     @Column
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long personId;
     @Column(name = "CLIENT_NAME")
     private String clientName;

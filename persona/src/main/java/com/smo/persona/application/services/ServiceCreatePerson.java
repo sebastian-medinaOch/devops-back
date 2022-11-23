@@ -18,7 +18,15 @@ public class ServiceCreatePerson implements CreatePersonInt {
     @Override
     public Person createPerson(PersonRequest personRequest) throws BussinessException {
         //validateRequest(personRequest);
-        return personUseCase.createPerson();
+        Person person = Person.builder()
+                .clientName(personRequest.getClientName())
+                .clientLastName(personRequest.getClientLastName())
+                .clientYear(personRequest.getClientYear())
+                .clientCity(personRequest.getClientCity())
+                .clientTypeDoc(personRequest.getClientTypeDoc())
+                .clientNumDoc(personRequest.getClientNumDoc())
+                .build();
+        return personUseCase.createPerson(person);
     }
 
     private void validateRequest(PersonRequest personRequest) throws BussinessException{
