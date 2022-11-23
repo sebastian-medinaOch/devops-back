@@ -8,4 +8,5 @@ public interface PersonRepositoryInt {
 
     ArrayList<Person> findAll();
     Person savePerson(Person person);
+    Person findByClientNumDoc(String clientNumDoc);
 }
