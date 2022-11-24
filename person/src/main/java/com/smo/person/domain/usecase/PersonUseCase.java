@@ -23,7 +23,8 @@ public class PersonUseCase {
         return personRepositoryInt.findAll();
     }
 
-    public void deletePerson(String clientNumDoc){
+    public void deletePerson(Long personId){
+        personRepositoryInt.deleteByPersonId(personId);
     }
 
 }

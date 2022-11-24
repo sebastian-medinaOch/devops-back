@@ -60,4 +60,10 @@ public class PersonRepository implements PersonRepositoryInt {
                 .clientNumDoc(personEntity.getClientNumDoc())
                 .build();
     }
+
+    @Override
+    public Long deleteByPersonId(Long personId) {
+        personDaoInt.deleteById(personId);
+        return personId;
+    }
 }
