@@ -7,6 +7,7 @@ import com.smo.person.domain.model.Person;
 import com.smo.person.domain.usecase.PersonUseCase;
 import com.smo.person.infrastructure.persistencia.entity.PersonEntity;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 
 import java.util.ArrayList;
 
@@ -19,7 +20,15 @@ public class ServicesGetPersons implements GetPersonsInt {
     @Override
     public ArrayList<Person> getPersons() throws BussinessException {
         ArrayList<PersonEntity> personEntity = personUseCase.getPersons();
+        validatePersons(personEntity);
         return personRepositoryBuild.buildAllPersons(personEntity);
+    }
+
+    private void validatePersons(ArrayList<PersonEntity> personEntity) throws BussinessException {
+        if (personEntity.size() == 0){
+            throw new BussinessException(HttpStatus.NOT_FOUND, "No se encontraron registros de las personas en el " +
+                    "sistema");
+        }
     }
 
 }
