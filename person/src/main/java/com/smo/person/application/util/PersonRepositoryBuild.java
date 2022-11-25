@@ -32,10 +32,10 @@ public class PersonRepositoryBuild {
         }
     }
 
-    public ArrayList<Person> buildAllPersons(ArrayList<PersonEntity> personEntities) throws BussinessException {
+    public ArrayList<Person> buildAllPersons(ArrayList<PersonEntity> personEntities){
         ArrayList<Person> personArrayList = new ArrayList<>();
         for (PersonEntity personEntity : personEntities) {
-            Person person = buildPersonComplete(personEntity);
+            Person person = buildPerson(personEntity);
             personArrayList.add(person);
         }
         return personArrayList;
