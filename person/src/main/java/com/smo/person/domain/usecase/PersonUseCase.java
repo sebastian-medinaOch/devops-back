@@ -3,6 +3,7 @@ package com.smo.person.domain.usecase;
 import com.smo.person.domain.exception.BussinessException;
 import com.smo.person.domain.gateways.PersonRepositoryInt;
 import com.smo.person.domain.model.Person;
+import com.smo.person.infrastructure.persistencia.entity.PersonEntity;
 import lombok.RequiredArgsConstructor;
 
 import java.util.ArrayList;
@@ -12,15 +13,15 @@ public class PersonUseCase {
 
     private final PersonRepositoryInt personRepositoryInt;
 
-    public Person createPerson(Person person){
-        return personRepositoryInt.savePerson(person);
+    public PersonEntity createPerson(PersonEntity personEntity){
+        return personRepositoryInt.savePerson(personEntity);
     }
 
-    public Person getPersonByNumDoc(String clientNumDoc) throws BussinessException {
+    public PersonEntity getPersonByNumDoc(String clientNumDoc){
         return personRepositoryInt.findByClientNumDoc(clientNumDoc);
     }
 
-    public ArrayList<Person> getPersons(){
+    public ArrayList<PersonEntity> getPersons(){
         return personRepositoryInt.findAll();
     }
 

@@ -4,10 +4,10 @@ import com.smo.person.application.services.ServiceCreatePerson;
 import com.smo.person.application.services.ServiceDeletePerson;
 import com.smo.person.application.services.ServicesGetPersonByNumDoc;
 import com.smo.person.application.services.ServicesGetPersons;
+import com.smo.person.application.util.PersonRepositoryBuild;
 import com.smo.person.domain.gateways.PersonRepositoryInt;
 import com.smo.person.domain.usecase.PersonUseCase;
 import com.smo.person.domain.util.AnswerUtil;
-import com.smo.person.infrastructure.persistencia.util.PersonRepositoryBuild;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -16,18 +16,19 @@ import org.springframework.context.annotation.Configuration;
 public class BeanConfiguration {
 
     @Bean
-    public ServiceCreatePerson serviceCreatePerson(PersonUseCase personUseCase){
-        return new ServiceCreatePerson(personUseCase);
+    public ServiceCreatePerson serviceCreatePerson(PersonUseCase personUseCase, PersonRepositoryBuild personRepositoryBuild){
+        return new ServiceCreatePerson(personUseCase, personRepositoryBuild);
     }
 
     @Bean
-    public ServicesGetPersonByNumDoc servicesGetPerson(PersonUseCase personUseCase){
-        return new ServicesGetPersonByNumDoc(personUseCase);
+    public ServicesGetPersonByNumDoc servicesGetPerson(PersonUseCase personUseCase,
+                                                       PersonRepositoryBuild personRepositoryBuild){
+        return new ServicesGetPersonByNumDoc(personUseCase, personRepositoryBuild);
     }
 
     @Bean
-    public ServicesGetPersons servicesGetPersons(PersonUseCase personUseCase){
-        return new ServicesGetPersons(personUseCase);
+    public ServicesGetPersons servicesGetPersons(PersonUseCase personUseCase, PersonRepositoryBuild personRepositoryBuild){
+        return new ServicesGetPersons(personUseCase, personRepositoryBuild);
     }
 
     @Bean

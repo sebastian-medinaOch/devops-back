@@ -1,8 +1,11 @@
 package com.smo.person.application.services;
 
 import com.smo.person.application.gateways.GetPersonsInt;
+import com.smo.person.application.util.PersonRepositoryBuild;
+import com.smo.person.domain.exception.BussinessException;
 import com.smo.person.domain.model.Person;
 import com.smo.person.domain.usecase.PersonUseCase;
+import com.smo.person.infrastructure.persistencia.entity.PersonEntity;
 import lombok.RequiredArgsConstructor;
 
 import java.util.ArrayList;
@@ -11,10 +14,12 @@ import java.util.ArrayList;
 public class ServicesGetPersons implements GetPersonsInt {
 
     private final PersonUseCase personUseCase;
+    private final PersonRepositoryBuild personRepositoryBuild;
 
     @Override
-    public ArrayList<Person> getPersons(){
-        return personUseCase.getPersons();
+    public ArrayList<Person> getPersons() throws BussinessException {
+        ArrayList<PersonEntity> personEntity = personUseCase.getPersons();
+        return personRepositoryBuild.buildAllPersons(personEntity);
     }
 
 }
