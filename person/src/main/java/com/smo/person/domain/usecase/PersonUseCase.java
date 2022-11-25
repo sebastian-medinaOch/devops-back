@@ -1,8 +1,6 @@
 package com.smo.person.domain.usecase;
 
-import com.smo.person.domain.exception.BussinessException;
 import com.smo.person.domain.gateways.PersonRepositoryInt;
-import com.smo.person.domain.model.Person;
 import com.smo.person.infrastructure.persistencia.entity.PersonEntity;
 import lombok.RequiredArgsConstructor;
 

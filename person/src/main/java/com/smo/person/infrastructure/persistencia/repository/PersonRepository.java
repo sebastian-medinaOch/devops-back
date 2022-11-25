@@ -1,6 +1,5 @@
 package com.smo.person.infrastructure.persistencia.repository;
 
-import com.smo.person.domain.exception.BussinessException;
 import com.smo.person.domain.gateways.PersonRepositoryInt;
 import com.smo.person.infrastructure.persistencia.dao.gateways.PersonDaoInt;
 import com.smo.person.infrastructure.persistencia.entity.PersonEntity;

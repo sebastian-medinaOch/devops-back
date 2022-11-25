@@ -1,6 +1,5 @@
 package com.smo.person.domain.gateways;
 
-import com.smo.person.domain.exception.BussinessException;
 import com.smo.person.infrastructure.persistencia.entity.PersonEntity;
 
 import java.util.ArrayList;
