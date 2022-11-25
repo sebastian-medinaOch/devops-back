@@ -7,6 +7,7 @@ import com.smo.person.application.services.ServicesGetPersons;
 import com.smo.person.domain.gateways.PersonRepositoryInt;
 import com.smo.person.domain.usecase.PersonUseCase;
 import com.smo.person.domain.util.AnswerUtil;
+import com.smo.person.infrastructure.persistencia.util.PersonRepositoryBuild;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -44,6 +45,10 @@ public class BeanConfiguration {
         return new AnswerUtil();
     }
 
+    @Bean
+    public PersonRepositoryBuild personRepositoryBuild(){
+        return new PersonRepositoryBuild();
+    }
 
 
 }
