@@ -1,9 +1,12 @@
-package com.smo.person.infrastructure.persistencia.util;
+package com.smo.person.application.util;
 
+import com.smo.person.application.request.PersonRequest;
 import com.smo.person.domain.exception.BussinessException;
 import com.smo.person.domain.model.Person;
 import com.smo.person.infrastructure.persistencia.entity.PersonEntity;
 import org.springframework.http.HttpStatus;
+
+import java.util.ArrayList;
 
 public class PersonRepositoryBuild {
 
@@ -27,6 +30,27 @@ public class PersonRepositoryBuild {
         if (personEntity == null){
             throw new BussinessException(HttpStatus.BAD_REQUEST, "La persona que desea consultar no existe en el sistema");
         }
+    }
+
+    public ArrayList<Person> buildAllPersons(ArrayList<PersonEntity> personEntities) throws BussinessException {
+        ArrayList<Person> personArrayList = new ArrayList<>();
+        for (PersonEntity personEntity : personEntities) {
+            Person person = buildPersonComplete(personEntity);
+            personArrayList.add(person);
+        }
+        return personArrayList;
+    }
+
+    public PersonEntity buildPersonEntity(PersonRequest personRequest){
+        PersonEntity personBuild = new PersonEntity();
+        personBuild.setClientName(personRequest.getClientName());
+        personBuild.setClientLastName(personRequest.getClientLastName());
+        personBuild.setClientYear(personRequest.getClientYear());
+        personBuild.setClientCity(personRequest.getClientCity());
+        personBuild.setClientTypeDoc(personRequest.getClientTypeDoc());
+        personBuild.setClientNumDoc(personRequest.getClientNumDoc());
+
+        return personBuild;
     }
 
 }

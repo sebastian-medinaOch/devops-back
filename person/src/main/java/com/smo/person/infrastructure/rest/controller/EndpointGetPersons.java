@@ -3,6 +3,7 @@ package com.smo.person.infrastructure.rest.controller;
 import com.smo.person.application.gateways.GetPersonsInt;
 import com.smo.person.domain.answer.AnswerData;
 import com.smo.person.domain.answer.DataResponse;
+import com.smo.person.domain.exception.BussinessException;
 import com.smo.person.domain.model.Person;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -22,7 +23,7 @@ public class EndpointGetPersons {
     private final GetPersonsInt getPersonsInt;
 
     @GetMapping(value = "/getPersons")
-    public ResponseEntity<AnswerData> getPersons(){
+    public ResponseEntity<AnswerData> getPersons() throws BussinessException {
         ArrayList<Person> persons = getPersonsInt.getPersons();
         DataResponse dataResponse = DataResponse.builder().message("Sastifactorio").data(Optional.of(persons)).build();
         AnswerData answerData = new AnswerData(HttpStatus.OK, dataResponse);

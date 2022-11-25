@@ -1,9 +1,11 @@
 package com.smo.person.application.services;
 
 import com.smo.person.application.gateways.GetPersonByNumDocInt;
+import com.smo.person.application.util.PersonRepositoryBuild;
 import com.smo.person.domain.exception.BussinessException;
 import com.smo.person.domain.model.Person;
 import com.smo.person.domain.usecase.PersonUseCase;
+import com.smo.person.infrastructure.persistencia.entity.PersonEntity;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 
@@ -11,11 +13,15 @@ import org.springframework.http.HttpStatus;
 public class ServicesGetPersonByNumDoc implements GetPersonByNumDocInt {
 
     private final PersonUseCase personUseCase;
+    private final PersonRepositoryBuild personRepositoryBuild;
 
     @Override
     public Person getPersonByNumDoc(String clientNumDoc) throws BussinessException {
         validateRequest(clientNumDoc);
-        return personUseCase.getPersonByNumDoc(clientNumDoc);
+
+        PersonEntity personEntity = personUseCase.getPersonByNumDoc(clientNumDoc);
+
+        return  personRepositoryBuild.buildPersonComplete(personEntity);
     }
 
     private void validateRequest(String clientNumDoc) throws BussinessException {
