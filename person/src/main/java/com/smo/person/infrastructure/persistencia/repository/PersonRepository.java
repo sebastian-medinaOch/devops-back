@@ -1,9 +1,11 @@
 package com.smo.person.infrastructure.persistencia.repository;
 
+import com.smo.person.domain.exception.BussinessException;
 import com.smo.person.domain.gateways.PersonRepositoryInt;
 import com.smo.person.domain.model.Person;
 import com.smo.person.infrastructure.persistencia.dao.gateways.PersonDaoInt;
 import com.smo.person.infrastructure.persistencia.entity.PersonEntity;
+import com.smo.person.infrastructure.persistencia.util.PersonRepositoryBuild;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
@@ -14,6 +16,7 @@ import java.util.ArrayList;
 public class PersonRepository implements PersonRepositoryInt {
 
     private final PersonDaoInt personDaoInt;
+    private final PersonRepositoryBuild personRepositoryBuild;
 
     @Override
     public ArrayList<Person> findAll() {
@@ -49,16 +52,9 @@ public class PersonRepository implements PersonRepositoryInt {
     }
 
     @Override
-    public Person findByClientNumDoc(String clientNumDoc) {
+    public Person findByClientNumDoc(String clientNumDoc) throws BussinessException {
         PersonEntity personEntity = personDaoInt.findByClientNumDoc(clientNumDoc);
-        return Person.builder().personId(personEntity.getPersonId())
-                .clientName(personEntity.getClientName())
-                .clientLastName(personEntity.getClientLastName())
-                .clientYear(personEntity.getClientYear())
-                .clientCity(personEntity.getClientCity())
-                .clientTypeDoc(personEntity.getClientTypeDoc())
-                .clientNumDoc(personEntity.getClientNumDoc())
-                .build();
+        return personRepositoryBuild.buildPersonComplete(personEntity);
     }
 
     @Override

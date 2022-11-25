@@ -1,5 +1,6 @@
 package com.smo.person.domain.usecase;
 
+import com.smo.person.domain.exception.BussinessException;
 import com.smo.person.domain.gateways.PersonRepositoryInt;
 import com.smo.person.domain.model.Person;
 import lombok.RequiredArgsConstructor;
@@ -15,7 +16,7 @@ public class PersonUseCase {
         return personRepositoryInt.savePerson(person);
     }
 
-    public Person getPersonByNumDoc(String clientNumDoc){
+    public Person getPersonByNumDoc(String clientNumDoc) throws BussinessException {
         return personRepositoryInt.findByClientNumDoc(clientNumDoc);
     }
 
