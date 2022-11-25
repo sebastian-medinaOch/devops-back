@@ -1,0 +1,117 @@
+{
+	"info": {
+		"_postman_id": "ea9de2a0-e53f-4350-88ad-67d4ad2180a5",
+		"name": "devops-back",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18840420"
+	},
+	"item": [
+		{
+			"name": "devops-back",
+			"item": [
+				{
+					"name": "person",
+					"item": [
+						{
+							"name": "getPerson",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8082/person/getPerson?clientNumDoc=a",
+									"host": [
+										"localhost"
+									],
+									"port": "8082",
+									"path": [
+										"person",
+										"getPerson"
+									],
+									"query": [
+										{
+											"key": "clientNumDoc",
+											"value": "a"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "deletePerson",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "localhost:8082/person/deletePerson?clientNumDoc=123",
+									"host": [
+										"localhost"
+									],
+									"port": "8082",
+									"path": [
+										"person",
+										"deletePerson"
+									],
+									"query": [
+										{
+											"key": "clientNumDoc",
+											"value": "123"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getPersons",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8083/person/getPersons",
+									"host": [
+										"localhost"
+									],
+									"port": "8083",
+									"path": [
+										"person",
+										"getPersons"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "createPerson",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"clientName\": \"Sebastian\",\r\n    \"clientLastName\": \"Medina Ochoa\",\r\n    \"clientYear\": \"21\",\r\n    \"clientCity\": \"Cali\",\r\n    \"clientTypeDoc\": \"cc\",\r\n    \"clientNumDoc\": \"123\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8083/person/createPerson",
+									"host": [
+										"localhost"
+									],
+									"port": "8083",
+									"path": [
+										"person",
+										"createPerson"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}
